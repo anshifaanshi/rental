@@ -29,12 +29,15 @@ export default function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-[#6b9fb8] text-xs md:text-sm uppercase tracking-[0.3em] mb-6 font-medium">
+          <p className="text-[#6b9fb8] text-xs md:text-sm uppercase tracking-[0.25em] mb-8 font-semibold">
             KIND WORDS
           </p>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-white leading-tight max-w-5xl mx-auto">
-            <span className="inline-block bg-[#4a7a8a] px-3 py-1 mr-2">E</span>
+          <h2 
+            className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.15] max-w-5xl mx-auto"
+            style={{ fontFamily: 'serif' }}
+          >
+            <span className="inline-block bg-[#4a7a8a] px-4 py-2 mr-3 font-normal">E</span>
             xceptional service is transforming journeys across the region
           </h2>
         </div>
@@ -50,37 +53,40 @@ export default function TestimonialsSection() {
                 animation: 'fadeInUp 0.8s ease-out forwards',
                 opacity: 0,
                 clipPath: `polygon(
-                  2% 1%, 5% 0.5%, 8% 1%, 12% 0.8%, 15% 1.2%, 18% 0.5%, 22% 1%, 25% 0.8%, 28% 1.2%, 32% 0.5%, 35% 1%, 38% 0.8%, 42% 1.2%, 45% 0.5%, 48% 1%, 52% 0.8%, 55% 1.2%, 58% 0.5%, 62% 1%, 65% 0.8%, 68% 1.2%, 72% 0.5%, 75% 1%, 78% 0.8%, 82% 1.2%, 85% 0.5%, 88% 1%, 92% 0.8%, 95% 1.2%, 98% 0.5%,
-                  99% 2%, 99.5% 5%, 99% 8%, 99.2% 12%, 98.8% 15%, 99.5% 18%, 99% 22%, 99.2% 25%, 98.8% 28%, 99.5% 32%, 99% 35%, 99.2% 38%, 98.8% 42%, 99.5% 45%, 99% 48%, 99.2% 52%, 98.8% 55%, 99.5% 58%, 99% 62%, 99.2% 65%, 98.8% 68%, 99.5% 72%, 99% 75%, 99.2% 78%, 98.8% 82%, 99.5% 85%, 99% 88%, 99.2% 92%, 98.8% 95%, 99.5% 98%,
-                  98% 99%, 95% 99.5%, 92% 99%, 88% 99.2%, 85% 98.8%, 82% 99.5%, 78% 99%, 75% 99.2%, 72% 98.8%, 68% 99.5%, 65% 99%, 62% 99.2%, 58% 98.8%, 55% 99.5%, 52% 99%, 48% 99.2%, 45% 98.8%, 42% 99.5%, 38% 99%, 35% 99.2%, 32% 98.8%, 28% 99.5%, 25% 99%, 22% 99.2%, 18% 98.8%, 15% 99.5%, 12% 99%, 8% 99.2%, 5% 98.8%, 2% 99.5%,
-                  1% 98%, 0.5% 95%, 1% 92%, 0.8% 88%, 1.2% 85%, 0.5% 82%, 1% 78%, 0.8% 75%, 1.2% 72%, 0.5% 68%, 1% 65%, 0.8% 62%, 1.2% 58%, 0.5% 55%, 1% 52%, 0.8% 48%, 1.2% 45%, 0.5% 42%, 1% 38%, 0.8% 35%, 1.2% 32%, 0.5% 28%, 1% 25%, 0.8% 22%, 1.2% 18%, 0.5% 15%, 1% 12%, 0.8% 8%, 1.2% 5%, 0.5% 2%
+                  1% 3%, 3% 1.5%, 6% 2%, 9% 1%, 12% 1.8%, 15% 1.2%, 18% 1.5%, 21% 1%, 24% 1.8%, 27% 1.2%, 30% 1.5%, 33% 1%, 36% 1.8%, 39% 1.2%, 42% 1.5%, 45% 1%, 48% 1.8%, 51% 1.2%, 54% 1.5%, 57% 1%, 60% 1.8%, 63% 1.2%, 66% 1.5%, 69% 1%, 72% 1.8%, 75% 1.2%, 78% 1.5%, 81% 1%, 84% 1.8%, 87% 1.2%, 90% 1.5%, 93% 1%, 96% 1.8%, 98% 2.5%,
+                  99% 4%, 99.2% 7%, 99% 10%, 99.3% 13%, 99.1% 16%, 99.3% 19%, 99% 22%, 99.2% 25%, 99% 28%, 99.3% 31%, 99.1% 34%, 99.3% 37%, 99% 40%, 99.2% 43%, 99% 46%, 99.3% 49%, 99.1% 52%, 99.3% 55%, 99% 58%, 99.2% 61%, 99% 64%, 99.3% 67%, 99.1% 70%, 99.3% 73%, 99% 76%, 99.2% 79%, 99% 82%, 99.3% 85%, 99.1% 88%, 99.3% 91%, 99% 94%, 98.5% 96.5%,
+                  96% 98.5%, 93% 99.2%, 90% 99%, 87% 99.5%, 84% 99.2%, 81% 99.5%, 78% 99.8%, 75% 99.3%, 72% 99.6%, 69% 99.9%, 66% 99.4%, 63% 99.7%, 60% 99.2%, 57% 99.6%, 54% 99%, 51% 99.5%, 48% 99.2%, 45% 99.6%, 42% 99%, 39% 99.5%, 36% 99.8%, 33% 99.3%, 30% 99.7%, 27% 99.1%, 24% 99.6%, 21% 99.9%, 18% 99.4%, 15% 99.8%, 12% 99.2%, 9% 99.6%, 6% 99%, 3% 99.5%, 1.5% 98%,
+                  0.8% 96%, 0.5% 93%, 0.8% 90%, 0.3% 87%, 0.6% 84%, 0.2% 81%, 0.5% 78%, 0.8% 75%, 0.4% 72%, 0.7% 69%, 0.3% 66%, 0.6% 63%, 0.9% 60%, 0.5% 57%, 0.8% 54%, 0.3% 51%, 0.6% 48%, 0.2% 45%, 0.5% 42%, 0.8% 39%, 0.4% 36%, 0.7% 33%, 0.3% 30%, 0.6% 27%, 0.9% 24%, 0.5% 21%, 0.8% 18%, 0.3% 15%, 0.6% 12%, 0.2% 9%, 0.5% 6%, 0.8% 4%
                 )`
               }}
             >
               {/* Quote Icon */}
               <div className="mb-6">
                 <svg 
-                  width="48" 
-                  height="48" 
+                  width="56" 
+                  height="56" 
                   viewBox="0 0 24 24" 
-                  fill="#4a7a8a"
-                  className="opacity-80"
+                  fill="#6b9fb8"
+                  className="opacity-70"
                 >
                   <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
                 </svg>
               </div>
 
               {/* Quote Text */}
-              <p className="text-white text-base md:text-lg leading-relaxed mb-8 font-light">
+              <p 
+                className="text-white text-lg md:text-xl leading-relaxed mb-10 font-light"
+                style={{ fontFamily: 'serif', letterSpacing: '-0.01em' }}
+              >
                 {testimonial.quote}
               </p>
 
               {/* Author */}
-              <div className="border-t border-[#4a7a8a]/30 pt-4">
-                <p className="text-[#6b9fb8] font-medium mb-1">
+              <div className="border-t border-[#4a7a8a]/30 pt-5">
+                <p className="text-[#6b9fb8] font-semibold text-base mb-2 tracking-wide">
                   {testimonial.feedback}
                 </p>
-                <p className="text-white/60 text-sm italic">
+                <p className="text-white/50 text-sm font-light italic">
                   {testimonial.author}
                 </p>
               </div>
