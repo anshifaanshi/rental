@@ -63,7 +63,7 @@ const MenuIcon = () => (
   </svg>
 );
 
-export default function HeroSlider(): JSX.Element {
+export default function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
