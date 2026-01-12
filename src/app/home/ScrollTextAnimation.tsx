@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function ScrollTextAnimation(): JSX.Element {
+export default function ScrollTextAnimation() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -51,7 +51,7 @@ export default function ScrollTextAnimation(): JSX.Element {
         isColored: i < coloredCount || hasScrolled
       }))
     );
-  }, [scrollProgress, hasScrolled]);
+  }, [scrollProgress, hasScrolled, words.length]);
 
   return (
     <section className="bg-white py-20">
