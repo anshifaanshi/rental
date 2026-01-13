@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface Slide {
   image: string;
@@ -10,28 +11,33 @@ interface Slide {
 
 interface MenuItem {
   name: string;
+  route: string;
   image: string;
   color: string;
 }
 
 const menuItems: MenuItem[] = [
   {
-    name: 'Phantigo',
+    name: 'Home',
+    route: '/',
     image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80',
     color: '#3d5a5a'
   },
   {
-    name: 'Violet',
+    name: 'About',
+    route: '/about',
     image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&q=80',
     color: '#2d4a4a'
   },
   {
-    name: 'Maximillian',
+    name: 'Bikes',
+    route: '/bikes',
     image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
     color: '#1d3a3a'
   },
   {
-    name: 'Huxton',
+    name: 'Contact',
+    route: '/contact',
     image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80',
     color: '#0d2a2a'
   }
@@ -69,6 +75,7 @@ export default function HeroSlider() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -106,6 +113,11 @@ export default function HeroSlider() {
     }, 1000);
   };
 
+  const handleNavigation = (route: string) => {
+    setIsMenuOpen(false);
+    router.push(route);
+  };
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Full Screen Menu Overlay */}
@@ -132,13 +144,12 @@ export default function HeroSlider() {
           {/* Menu Items with Different Background Colors and Hover Effect */}
           <div className="flex-1 flex flex-col">
             {menuItems.map((item, index) => (
-              <a
+              <button
                 key={index}
-                href={`#${item.name.toLowerCase()}`}
-                className="flex-1 flex relative overflow-hidden group border-b border-white/30 last:border-b-0"
+                onClick={() => handleNavigation(item.route)}
+                className="flex-1 flex relative overflow-hidden group border-b border-white/30 last:border-b-0 cursor-pointer"
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
-                onClick={() => setIsMenuOpen(false)}
               >
                 {/* Background Image (1/3 left) */}
                 <div 
@@ -203,16 +214,16 @@ export default function HeroSlider() {
                     )}
                   </div>
                 </div>
-              </a>
+              </button>
             ))}
           </div>
 
           {/* Footer Links */}
           <div className="flex justify-center gap-8 py-8 bg-[#d3d7cd] text-[#4a5f5f] text-xs tracking-[0.2em] uppercase font-medium">
-            <a href="#about" className="hover:opacity-70 transition-opacity">ABOUT</a>
-            <a href="#faqs" className="hover:opacity-70 transition-opacity">FAQS</a>
-            <a href="#favorites" className="hover:opacity-70 transition-opacity">FAVORITES</a>
-            <a href="#contact" className="hover:opacity-70 transition-opacity">CONTACT</a>
+            <button onClick={() => handleNavigation('/about')} className="hover:opacity-70 transition-opacity">ABOUT</button>
+            <button onClick={() => handleNavigation('/faqs')} className="hover:opacity-70 transition-opacity">FAQS</button>
+            <button onClick={() => handleNavigation('/favorites')} className="hover:opacity-70 transition-opacity">FAVORITES</button>
+            <button onClick={() => handleNavigation('/contact')} className="hover:opacity-70 transition-opacity">CONTACT</button>
           </div>
         </div>
 
