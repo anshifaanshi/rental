@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
 
 interface Slide {
   image: string;
@@ -11,7 +10,6 @@ interface Slide {
 
 interface MenuItem {
   name: string;
-  route: string;
   image: string;
   color: string;
 }
@@ -19,45 +17,41 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     name: 'Home',
-    route: '/',
-    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
     color: '#3d5a5a'
   },
   {
     name: 'About',
-    route: '/about',
-    image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=800&q=80',
     color: '#2d4a4a'
   },
   {
-    name: 'Bikes',
-    route: '/bikes',
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80',
+    name: 'Scooters',
+    image: 'https://wallpaperaccess.com/full/4441.jpg',
     color: '#1d3a3a'
   },
   {
     name: 'Contact',
-    route: '/contact',
-    image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80',
+    image: 'http://getwallpapers.com/wallpaper/full/2/a/e/1099643-vintage-motorcycle-wallpaper-3840x2160-phone.jpg',
     color: '#0d2a2a'
   }
 ];
 
 const slides: Slide[] = [
   {
-    image: 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920&q=80',
-    title: 'Luxury cars for every journey',
-    subtitle: 'EXPERIENCE THE ROAD LIKE NEVER BEFORE—IT MEANS DRIVING YOUR DREAMS.'
+    image: 'https://wallpaperaccess.com/full/4441.jpg',
+    title: 'Premium scooters for rent',
+    subtitle: 'DISCOVER THE FREEDOM OF THE RIDE—RENT YOUR PERFECT SCOOTER TODAY.'
   },
   {
-    image: 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=1920&q=80',
-    title: 'Premium bikes for adventurers',
-    subtitle: 'FREEDOM ON TWO WHEELS—IT MEANS EMBRACING THE OPEN ROAD.'
+    image: 'https://static.vecteezy.com/system/resources/previews/033/692/799/non_2x/motorcycle-rider-on-sport-bike-driving-fast-on-race-track-at-sunset-motorcycle-rider-on-sport-bike-rides-fast-on-race-track-at-sunset-extreme-athlete-sport-motorcycles-racing-ai-generated-free-photo.jpg',
+    title: 'Adventure awaits you',
+    subtitle: 'EXPLORE THE CITY IN STYLE—QUALITY SCOOTER RENTALS FOR EVERY JOURNEY.'
   },
   {
-    image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1920&q=80',
-    title: 'Elite collection awaits you',
-    subtitle: 'RIDE IN STYLE AND COMFORT—IT MEANS TRAVELING WITH EXCELLENCE.'
+    image: 'http://getwallpapers.com/wallpaper/full/2/a/e/1099643-vintage-motorcycle-wallpaper-3840x2160-phone.jpg',
+    title: 'Ride in comfort and style',
+    subtitle: 'FROM ELECTRIC TO CLASSIC SCOOTERS—FIND YOUR IDEAL RENTAL EXPERIENCE.'
   }
 ];
 
@@ -69,13 +63,12 @@ const MenuIcon = () => (
   </svg>
 );
 
-export default function HeroSlider() {
+export default function ScooterRentalPage() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -113,9 +106,9 @@ export default function HeroSlider() {
     }, 1000);
   };
 
-  const handleNavigation = (route: string) => {
+  const handleMenuClick = (itemName: string) => {
     setIsMenuOpen(false);
-    router.push(route);
+    console.log(`Navigating to: ${itemName}`);
   };
 
   return (
@@ -141,12 +134,12 @@ export default function HeroSlider() {
             </button>
           </div>
 
-          {/* Menu Items with Different Background Colors and Hover Effect */}
+          {/* Menu Items */}
           <div className="flex-1 flex flex-col">
             {menuItems.map((item, index) => (
               <button
                 key={index}
-                onClick={() => handleNavigation(item.route)}
+                onClick={() => handleMenuClick(item.name)}
                 className="flex-1 flex relative overflow-hidden group border-b border-white/30 last:border-b-0 cursor-pointer"
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
@@ -220,10 +213,10 @@ export default function HeroSlider() {
 
           {/* Footer Links */}
           <div className="flex justify-center gap-8 py-8 bg-[#d3d7cd] text-[#4a5f5f] text-xs tracking-[0.2em] uppercase font-medium">
-            <button onClick={() => handleNavigation('/about')} className="hover:opacity-70 transition-opacity">ABOUT</button>
-            <button onClick={() => handleNavigation('/faqs')} className="hover:opacity-70 transition-opacity">FAQS</button>
-            <button onClick={() => handleNavigation('/favorites')} className="hover:opacity-70 transition-opacity">FAVORITES</button>
-            <button onClick={() => handleNavigation('/contact')} className="hover:opacity-70 transition-opacity">CONTACT</button>
+            <button onClick={() => handleMenuClick('About')} className="hover:opacity-70 transition-opacity">ABOUT</button>
+            <button onClick={() => handleMenuClick('FAQs')} className="hover:opacity-70 transition-opacity">FAQS</button>
+            <button onClick={() => handleMenuClick('Favorites')} className="hover:opacity-70 transition-opacity">FAVORITES</button>
+            <button onClick={() => handleMenuClick('Contact')} className="hover:opacity-70 transition-opacity">CONTACT</button>
           </div>
         </div>
 
@@ -262,6 +255,7 @@ export default function HeroSlider() {
           </button>
         </div>
       </div>
+
       {/* Background Images */}
       {slides.map((slide, index) => (
         <div
@@ -297,7 +291,7 @@ export default function HeroSlider() {
             ROOOF
           </div>
 
-          <div className="w-24"></div> {/* Spacer for centering logo */}
+          <div className="w-24"></div>
         </nav>
 
         {/* Hero Content */}
@@ -338,7 +332,7 @@ export default function HeroSlider() {
                 letterSpacing: '0.15em'
               }}
             >
-              EXPLORE COLLECTION
+              RENT A SCOOTER NOW
             </button>
           </div>
         </div>

@@ -179,7 +179,7 @@ export default function VisionSection() {
           <div className="relative">
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80" 
+                src="https://wallpapercave.com/wp/wp11496644.jpg" 
                 alt="Luxury car rental service"
                 className="w-full h-auto rounded-lg shadow-2xl"
               />
