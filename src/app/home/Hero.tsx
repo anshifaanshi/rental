@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface Slide {
   image: string;
@@ -10,6 +11,7 @@ interface Slide {
 
 interface MenuItem {
   name: string;
+  route: string;
   image: string;
   color: string;
 }
@@ -17,21 +19,25 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     name: 'Home',
+    route: '/',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
     color: '#3d5a5a'
   },
   {
     name: 'About',
+    route: '/about',
     image: 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=800&q=80',
     color: '#2d4a4a'
   },
   {
-    name: 'Scooters',
+    name: 'Bikes',
+    route: '/bikes',
     image: 'https://wallpaperaccess.com/full/4441.jpg',
     color: '#1d3a3a'
   },
   {
     name: 'Contact',
+    route: '/contact',
     image: 'http://getwallpapers.com/wallpaper/full/2/a/e/1099643-vintage-motorcycle-wallpaper-3840x2160-phone.jpg',
     color: '#0d2a2a'
   }
@@ -64,6 +70,7 @@ const MenuIcon = () => (
 );
 
 export default function ScooterRentalPage() {
+  const router = useRouter();
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -106,8 +113,9 @@ export default function ScooterRentalPage() {
     }, 1000);
   };
 
-  const handleMenuClick = (itemName: string) => {
+  const handleMenuClick = (itemName: string, route: string) => {
     setIsMenuOpen(false);
+    router.push(route);
     console.log(`Navigating to: ${itemName}`);
   };
 
@@ -139,7 +147,7 @@ export default function ScooterRentalPage() {
             {menuItems.map((item, index) => (
               <button
                 key={index}
-                onClick={() => handleMenuClick(item.name)}
+                onClick={() => handleMenuClick(item.name, item.route)}
                 className="flex-1 flex relative overflow-hidden group border-b border-white/30 last:border-b-0 cursor-pointer"
                 onMouseEnter={() => setHoveredItem(index)}
                 onMouseLeave={() => setHoveredItem(null)}
@@ -213,10 +221,10 @@ export default function ScooterRentalPage() {
 
           {/* Footer Links */}
           <div className="flex justify-center gap-8 py-8 bg-[#d3d7cd] text-[#4a5f5f] text-xs tracking-[0.2em] uppercase font-medium">
-            <button onClick={() => handleMenuClick('About')} className="hover:opacity-70 transition-opacity">ABOUT</button>
-            <button onClick={() => handleMenuClick('FAQs')} className="hover:opacity-70 transition-opacity">FAQS</button>
-            <button onClick={() => handleMenuClick('Favorites')} className="hover:opacity-70 transition-opacity">FAVORITES</button>
-            <button onClick={() => handleMenuClick('Contact')} className="hover:opacity-70 transition-opacity">CONTACT</button>
+            <button onClick={() => handleMenuClick('About', '/about')} className="hover:opacity-70 transition-opacity">ABOUT</button>
+            <button onClick={() => handleMenuClick('FAQs', '/faqs')} className="hover:opacity-70 transition-opacity">FAQS</button>
+            <button onClick={() => handleMenuClick('Favorites', '/favorites')} className="hover:opacity-70 transition-opacity">FAVORITES</button>
+            <button onClick={() => handleMenuClick('Contact', '/contact')} className="hover:opacity-70 transition-opacity">CONTACT</button>
           </div>
         </div>
 
@@ -291,7 +299,28 @@ export default function ScooterRentalPage() {
             ROOOF
           </div>
 
-          <div className="w-24"></div>
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => router.push('/login')}
+              className="px-6 py-2 text-white text-xs tracking-[0.2em] uppercase font-medium hover:bg-white/10 transition-all duration-300 border border-white/50"
+              style={{ 
+                fontFamily: 'sans-serif',
+                letterSpacing: '0.15em'
+              }}
+            >
+              LOGIN
+            </button>
+            <button 
+              onClick={() => router.push('/signup')}
+              className="px-6 py-2 bg-[#2c5f5f] text-white text-xs tracking-[0.2em] uppercase font-medium hover:bg-[#234a4a] transition-all duration-300"
+              style={{ 
+                fontFamily: 'sans-serif',
+                letterSpacing: '0.15em'
+              }}
+            >
+              SIGN UP
+            </button>
+          </div>
         </nav>
 
         {/* Hero Content */}
