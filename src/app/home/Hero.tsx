@@ -130,10 +130,10 @@ export default function ScooterRentalPage() {
       >
         <div className="h-full flex flex-col">
           {/* Close Button */}
-          <div className="flex justify-start p-8 bg-[#f8f8f3]">
+          <div className="flex justify-start p-4 sm:p-6 md:p-8 bg-[#f8f8f3]">
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="flex items-center justify-center w-12 h-12 bg-[#2c5f5f] hover:bg-[#234a4a] transition-colors text-white"
+              className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#2c5f5f] hover:bg-[#234a4a] transition-colors text-white"
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -187,9 +187,9 @@ export default function ScooterRentalPage() {
 
                 {/* Text Content */}
                 <div className="relative z-10 flex-1 flex items-center justify-center">
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
                     <span 
-                      className={`text-6xl md:text-7xl lg:text-8xl transition-colors duration-700 ${
+                      className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl transition-colors duration-700 ${
                         hoveredItem === index ? 'text-white' : 'text-[#4a5f5f]'
                       }`}
                       style={{ 
@@ -202,13 +202,13 @@ export default function ScooterRentalPage() {
                     </span>
                     {hoveredItem === index && (
                       <svg 
-                        width="40" 
-                        height="40" 
+                        width="32" 
+                        height="32" 
                         viewBox="0 0 24 24" 
                         fill="none" 
                         stroke="white" 
                         strokeWidth="1.5"
-                        className="animate-[slideRight_0.7s_ease-out]"
+                        className="animate-[slideRight_0.7s_ease-out] w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
                       >
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg>
@@ -220,7 +220,7 @@ export default function ScooterRentalPage() {
           </div>
 
           {/* Footer Links */}
-          <div className="flex justify-center gap-8 py-8 bg-[#d3d7cd] text-[#4a5f5f] text-xs tracking-[0.2em] uppercase font-medium">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 py-4 sm:py-6 md:py-8 px-4 bg-[#d3d7cd] text-[#4a5f5f] text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium">
             <button onClick={() => handleMenuClick('About', '/about')} className="hover:opacity-70 transition-opacity">ABOUT</button>
             <button onClick={() => handleMenuClick('FAQs', '/faqs')} className="hover:opacity-70 transition-opacity">FAQS</button>
             <button onClick={() => handleMenuClick('Favorites', '/favorites')} className="hover:opacity-70 transition-opacity">FAVORITES</button>
@@ -228,8 +228,8 @@ export default function ScooterRentalPage() {
           </div>
         </div>
 
-        {/* Vertical Sidebar Icons */}
-        <div className="absolute left-0 top-1/2 -translate-y-1/2 flex flex-col items-center gap-6 bg-white/50 py-6 px-3">
+        {/* Vertical Sidebar Icons - Hidden on mobile */}
+        <div className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 flex-col items-center gap-6 bg-white/50 py-6 px-3">
           <button className="text-[#2c5f5f] hover:opacity-70 transition-opacity" aria-label="Shopping Cart">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="9" cy="21" r="1"></circle>
@@ -283,51 +283,51 @@ export default function ScooterRentalPage() {
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col">
-        {/* Navigation */}
-        <nav className="flex items-center justify-between px-8 py-6">
+        {/* Navigation - FULLY RESPONSIVE */}
+        <nav className="flex items-center justify-between px-4 sm:px-6 md:px-8 py-4 md:py-6">
           <button 
             onClick={() => setIsMenuOpen(true)}
-            className="flex items-center gap-3 text-white hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 md:gap-3 text-white hover:opacity-80 transition-opacity"
           >
-            <div className="flex items-center justify-center w-12 h-12 bg-[#2c5f5f] hover:bg-[#234a4a] transition-colors">
+            <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 bg-[#2c5f5f] hover:bg-[#234a4a] transition-colors">
               <MenuIcon />
             </div>
-            <span className="text-sm font-medium tracking-wider uppercase">MENU</span>
+            <span className="hidden sm:inline text-xs md:text-sm font-medium tracking-wider uppercase">MENU</span>
           </button>
 
-          <div className="text-white text-3xl font-light tracking-[0.4em]">
+          <div className="text-white text-xl sm:text-2xl md:text-3xl font-light tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em]">
             ROOOF
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
             <button 
               onClick={() => router.push('/login')}
-              className="px-6 py-2 text-white text-xs tracking-[0.2em] uppercase font-medium hover:bg-white/10 transition-all duration-300 border border-white/50"
+              className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 text-white text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium hover:bg-white/10 transition-all duration-300 border border-white/50"
               style={{ 
-                fontFamily: 'sans-serif',
-                letterSpacing: '0.15em'
+                fontFamily: 'sans-serif'
               }}
             >
-              LOGIN
+              <span className="hidden sm:inline">LOGIN</span>
+              <span className="sm:hidden">LOG IN</span>
             </button>
             <button 
               onClick={() => router.push('/signup')}
-              className="px-6 py-2 bg-[#2c5f5f] text-white text-xs tracking-[0.2em] uppercase font-medium hover:bg-[#234a4a] transition-all duration-300"
+              className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 bg-[#2c5f5f] text-white text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium hover:bg-[#234a4a] transition-all duration-300"
               style={{ 
-                fontFamily: 'sans-serif',
-                letterSpacing: '0.15em'
+                fontFamily: 'sans-serif'
               }}
             >
-              SIGN UP
+              <span className="hidden sm:inline">SIGN UP</span>
+              <span className="sm:hidden">JOIN</span>
             </button>
           </div>
         </nav>
 
-        {/* Hero Content */}
-        <div className="flex-1 flex items-center px-8 md:px-16 lg:px-24">
+        {/* Hero Content - FULLY RESPONSIVE */}
+        <div className="flex-1 flex items-center px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
           <div className="max-w-4xl">
             <h1 
-              className={`text-white text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight mb-8 leading-[1.1] transition-all duration-1000 ${
+              className={`text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-extralight mb-4 sm:mb-6 md:mb-8 leading-[1.1] transition-all duration-1000 ${
                 isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'
               }`}
               style={{ 
@@ -340,7 +340,7 @@ export default function ScooterRentalPage() {
             </h1>
 
             <p 
-              className={`text-white text-xs md:text-sm tracking-[0.15em] mb-12 max-w-xl uppercase font-light transition-all duration-1000 delay-200 ${
+              className={`text-white text-[10px] sm:text-xs md:text-sm tracking-[0.1em] sm:tracking-[0.15em] mb-6 sm:mb-8 md:mb-12 max-w-xl uppercase font-light transition-all duration-1000 delay-200 ${
                 isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'
               }`}
               style={{ 
@@ -352,13 +352,12 @@ export default function ScooterRentalPage() {
             </p>
 
             <button 
-              className={`px-10 py-4 bg-[#2c5f5f] text-white text-xs tracking-[0.2em] uppercase font-medium hover:bg-[#234a4a] transition-all duration-300 rounded ${
+              className={`px-6 sm:px-8 md:px-10 py-2.5 sm:py-3 md:py-4 bg-[#2c5f5f] text-white text-[10px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium hover:bg-[#234a4a] transition-all duration-300 rounded ${
                 isTransitioning ? 'opacity-0 translate-y-8' : 'opacity-100 translate-y-0'
               }`}
               style={{ 
                 transitionDelay: '400ms',
-                fontFamily: 'sans-serif',
-                letterSpacing: '0.15em'
+                fontFamily: 'sans-serif'
               }}
             >
               RENT A SCOOTER NOW
@@ -366,13 +365,13 @@ export default function ScooterRentalPage() {
           </div>
         </div>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-12 left-8 md:left-16 lg:left-24 flex gap-3">
+        {/* Slide Indicators - FULLY RESPONSIVE */}
+        <div className="absolute bottom-8 sm:bottom-10 md:bottom-12 left-4 sm:left-6 md:left-12 lg:left-16 xl:left-24 flex gap-2 sm:gap-3">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-12 h-1 transition-all duration-500 ${
+              className={`w-8 sm:w-10 md:w-12 h-0.5 sm:h-1 transition-all duration-500 ${
                 index === currentSlide 
                   ? 'bg-white' 
                   : 'bg-white/30 hover:bg-white/50'
@@ -382,10 +381,10 @@ export default function ScooterRentalPage() {
           ))}
         </div>
 
-        {/* Slide Counter */}
-        <div className="absolute bottom-12 right-8 md:right-16 lg:right-24 text-white text-sm">
-          <span className="text-2xl font-light">{String(currentSlide + 1).padStart(2, '0')}</span>
-          <span className="text-white/50 mx-2">/</span>
+        {/* Slide Counter - FULLY RESPONSIVE */}
+        <div className="absolute bottom-8 sm:bottom-10 md:bottom-12 right-4 sm:right-6 md:right-12 lg:right-16 xl:right-24 text-white text-xs sm:text-sm">
+          <span className="text-lg sm:text-xl md:text-2xl font-light">{String(currentSlide + 1).padStart(2, '0')}</span>
+          <span className="text-white/50 mx-1 sm:mx-2">/</span>
           <span className="text-white/50">{String(slides.length).padStart(2, '0')}</span>
         </div>
       </div>
